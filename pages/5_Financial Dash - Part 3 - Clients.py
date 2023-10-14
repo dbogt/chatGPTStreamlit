@@ -6,9 +6,8 @@ import plotly.express as px
 appDetails = """
 Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
 Date: Oct 16, 2023 \n
-ChatGPT Convo: https://chat.openai.com/share/3125e5e4-8aa0-4b46-be3b-dbfdd9868afc
-Description: T iteration of dashboard using Plotly charts.
-Prompt: Instead of using altair can you redo those graphs with the plotly library?
+ChatGPT Convo: https://chat.openai.com/share/3125e5e4-8aa0-4b46-be3b-dbfdd9868afc \n
+Description: Third iteration of dashboard with drilldown on clients.
 """
 with st.expander("See app info"):
     st.write(appDetails)
