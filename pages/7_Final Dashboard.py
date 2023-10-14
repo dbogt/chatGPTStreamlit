@@ -54,7 +54,7 @@ if layout_pick=='Summary':
   # Group data by 'Client Name' and calculate total fees for each client
   num = min(num_picked, 10)
   top_clients = filtered_df.groupby('Client Name')['fees'].sum().sort_values(ascending=False).head(num)
-  fig = px.bar(top_clients, x=top_clients.index, y='fees', title="Top " + num +" Clients by Total Fees")
+  fig = px.bar(top_clients, x=top_clients.index, y='fees', title="Top {} Clients by Total Fees".format(num)
   st.plotly_chart(fig)
   
   st.header("Fees by GICS Sector")
