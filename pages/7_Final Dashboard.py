@@ -135,7 +135,7 @@ elif layout_pick == 'Advanced Charts':
             figSector = px.sunburst(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
         else:
             figSector = px.treemap(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
-        st.plotly_chart(figSector, use_container_width=True) 
+        st.plotly_chart(figSector, use_container_width=True, height=500) 
     elif chartType == 'bar':
         kpi = st.selectbox("KPI", kpis)
         xCat = st.selectbox("Pick a category for the x-axis",categories,index=categories.index("Client Name"))
@@ -144,5 +144,5 @@ elif layout_pick == 'Advanced Charts':
         custTitle = "Total " +kpi.title() + " Value by " + xCat + " by " + zCat
         fig = px.bar(filtered_df, x=xCat, y=kpi, color=zCat, hover_name=hover, title=custTitle)
         fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True, height=500)
         
