@@ -137,10 +137,11 @@ elif layout_pick == 'Advanced Charts':
             figSector = px.treemap(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
         st.plotly_chart(figSector, use_container_width=True, height=500) 
     elif chartType == 'bar':
-        kpi = st.selectbox("KPI", kpis)
-        xCat = st.selectbox("Pick a category for the x-axis",categories,index=categories.index("Client Name"))
-        zCat = st.selectbox("Pick a category for the legend filter",categories,index=categories.index("GICS Sector"))
-        hover = st.selectbox("Pick a category for the hover",categories,index=categories.index("ticker"))
+        k_col, x_col, z_col, h_col = st.columns(4)
+        kpi = k_col.selectbox("KPI", kpis)
+        xCat = x_col.selectbox("Pick a category for the x-axis",categories,index=categories.index("Client Name"))
+        zCat = z_col.selectbox("Pick a category for the legend filter",categories,index=categories.index("GICS Sector"))
+        hover = h_col.selectbox("Pick a category for the hover",categories,index=categories.index("ticker"))
         custTitle = "Total " +kpi.title() + " Value by " + xCat + " by " + zCat
         fig = px.bar(filtered_df, x=xCat, y=kpi, color=zCat, hover_name=hover, title=custTitle)
         fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
