@@ -21,5 +21,5 @@ st.markdown(text)
 
 st.sidebar.markdown("About Instructor:")
 st.sidebar.image("https://avatars.githubusercontent.com/u/59750436?v=4")
-st.sidebar.write("Bogdan delivers a variety of courses at The Marquee Group that focus on financial modeling, data sciences, and programming.")
+st.sidebar.write("Bogdan is Co-Head of Data Science and instructor at Training The Street, delivering a variety of courses that focus on financial modeling, data sciences, and programming.")
 st.sidebar.write("Github: https://github.com/dbogt")
