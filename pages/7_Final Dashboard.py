@@ -56,7 +56,7 @@ if layout_pick=='Summary':
   fees_over_time = filtered_df.groupby('date')['fees'].sum().reset_index()  
   st.header("Total Fees Over Time")
   fig = px.line(fees_over_time, x='date', y='fees', title="Total Fees Over Time")
-  st.plotly_chart(fig)
+  st.plotly_chart(fig, use_container_width=True)
   
   st.header("Top Clients by Total Fees")
   # Group data by 'Client Name' and calculate total fees for each client
