@@ -20,7 +20,7 @@ with st.expander("See app info"):
 # Load your financial dataset
 df = pd.read_excel('chatGPTDemo.xlsx')
 # Assuming your dataset is loaded into a pandas DataFrame named 'df'
-df['dollar_volume'] = df['quantity'] * df['fee/share'] #code carried over from Part 2
+df['dollar_volume'] = df['quantity'] * df['Adj Close'] #code carried over from Part 2
 st.title("Financial Data Dashboard")
 
 # Create a multi-select dropdown to select one or more clients
