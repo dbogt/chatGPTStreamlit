@@ -24,4 +24,4 @@ if st.button("Click me"):
 
 # Add a chart (e.g., a line chart)
 chart_data = pd.DataFrame({'x': [1, 2, 3, 4, 5], 'y': [10, 20, 30, 40, 50]})
-st.line_chart(chart_data)
+#st.line_chart(chart_data)
