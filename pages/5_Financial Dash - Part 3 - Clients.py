@@ -18,7 +18,7 @@ with st.expander("See app info"):
 df = pd.read_excel('chatGPTDemo.xlsx')
 # Assuming your dataset is loaded into a pandas DataFrame named 'df'
 df['dollar_volume'] = df['quantity'] * df['fee/share'] #code carried over from Part 2
-
+st.write(df)
 st.title("Financial Data Dashboard")
 
 # Create a multi-select dropdown to select one or more clients
@@ -27,7 +27,6 @@ selected_clients = st.multiselect("Select Client(s)", df['Client Name'].unique()
 if selected_clients:
     # Filter the DataFrame based on the selected clients
     filtered_df = df[df['Client Name'].isin(selected_clients)]
-    st.write(filtered_df)
 
     # Total volume traded and total commissions
     total_volume = filtered_df['quantity'].sum()
