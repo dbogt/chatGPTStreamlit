@@ -78,7 +78,7 @@ if layout_pick=='Summary':
   
 elif layout_pick=='Key Client Stats':
     # Total volume traded and total commissions
-    total_volume = filtered_df['quantity'].sum()
+    total_volume = filtered_df['dollar_volume'].sum()
     total_commissions = filtered_df['fees'].sum()
 
     st.subheader("Key Stats for Selected Client(s)")
