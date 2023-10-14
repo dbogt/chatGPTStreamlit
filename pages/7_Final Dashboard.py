@@ -140,5 +140,6 @@ elif layout_pick == 'Advanced Charts':
         hover = st.selectbox("Pick a category for the hover",categories,index=categories.index("ticker"))
         custTitle = "Total " +kpi.title() + " Value by " + xCat + " by " + zCat
         fig = px.bar(filtered_df, x=xCat, y=kpi, color=zCat, hover_name=hover, title=custTitle)
+        fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
         st.plotly_chart(fig)
         
