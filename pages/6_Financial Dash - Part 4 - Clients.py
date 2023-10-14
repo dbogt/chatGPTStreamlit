@@ -7,7 +7,10 @@ appDetails = """
 Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
 Date: Oct 16, 2023 \n
 ChatGPT Convo: https://chat.openai.com/share/3125e5e4-8aa0-4b46-be3b-dbfdd9868afc \n
-Description: Fourth iteration of dashboard with drilldown on clients and better formatting.
+Description: Fourth iteration of dashboard with drilldown on clients and better formatting. \n
+Changes made from original ChatGPT code:
+- in newer version of streamlit, st.columns has now replaced st.beta_columns
+
 """
 with st.expander("See app info"):
     st.write(appDetails)
@@ -42,7 +45,8 @@ if selected_clients:
 
     st.subheader("Top 5 Tickers Traded")
     # Display tables side by side in two columns
-    col1, col2 = st.beta_columns(2)
+    #col1, col2 = st.beta_columns(2) #original ChatGPT code
+    col1, col2 = st.columns(2)
     col1.write("By Dollar Volume:")
     col1.write(top_tickers_by_volume)
 
@@ -56,7 +60,8 @@ if selected_clients:
     st.subheader("Top 5 Sectors Traded")
 
     # Display tables side by side in two columns
-    col3, col4 = st.beta_columns(2)
+    #col3, col4 = st.beta_columns(2) #original ChatGPT code   
+    col3, col4 = st.columns(2) 
     col3.write("By Dollar Volume:")
     col3.write(top_sectors_by_volume)
 
