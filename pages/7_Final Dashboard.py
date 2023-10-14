@@ -88,7 +88,7 @@ elif layout_pick=='Key Client Stats':
     st.subheader("Top 5 Tickers Traded")
     # Display tables side by side in two columns
     col1, col2 = st.columns(2)
-    col1.metric("By Dollar Volume:")
+    col1.write("By Dollar Volume:")
     col1.write(top_tickers_by_volume)
 
     col2.write("By Fees:")
