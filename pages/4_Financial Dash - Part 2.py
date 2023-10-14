@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
+import plotly.express as px
 
 # Load your financial dataset
 df = pd.read_excel('chatGPTDemo.xlsx')
