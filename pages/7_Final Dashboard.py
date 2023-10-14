@@ -24,6 +24,7 @@ df = grabData()
 
 unique_clients = sorted(df['Client Name'].unique())
 selected_clients = st.sidebar.multiselect("Select Client(s)", unique_clients)
+num_picked = len(selected_clients)
 
 if selected_clients:
     # Filter the DataFrame based on the selected clients
@@ -31,47 +32,33 @@ if selected_clients:
 else:
     filtered_df = df
 
-
 layout_pick = st.sidebar.radio("Pick dashobard view:", ['Summary','Key Client Stats'])
 
-
 if layout_pick=='Summary':
-  #%% 1. ChatGPT Code - Total Fees Over Time: Visualize the total fees generated over the quarter to track the revenue trend.
   # Group data by date and calculate total fees for each day
-  fees_over_time = df.groupby('date')['fees'].sum().reset_index()  
+  fees_over_time = filtered_df.groupby('date')['fees'].sum().reset_index()  
   st.header("Total Fees Over Time")
   fig = px.line(fees_over_time, x='date', y='fees', title="Total Fees Over Time")
   st.plotly_chart(fig)
   
-  
-  #%% 2. ChatGPT Code - Top Clients by Total Fees: Identify your most profitable clients.
-  # Group data by 'Client Name' and calculate total fees for each client
-  top_clients = df.groupby('Client Name')['fees'].sum().sort_values(ascending=False).head(10)
-  
   st.header("Top Clients by Total Fees")
+  # Group data by 'Client Name' and calculate total fees for each client
+  num = min(num_picked, 10)
+  top_clients = filtered_df.groupby('Client Name')['fees'].sum().sort_values(ascending=False).head(num)
   fig = px.bar(top_clients, x=top_clients.index, y='fees', title="Top Clients by Total Fees")
   st.plotly_chart(fig)
   
-  #%% 3. ChatGPT Code - Fees by Sector: Understand which sectors generate the most fees.
-  # Group data by 'GICS Sector' and calculate total fees for each sector
-  fees_by_sector = df.groupby('GICS Sector')['fees'].sum().reset_index()
-  
   st.header("Fees by GICS Sector")
-  fig = px.pie(fees_by_sector, names='GICS Sector', values='fees', title="Fees by GICS Sector")
+  fig = px.pie(filtered_df, names='GICS Sector', values='fees', title="Fees by GICS Sector")
   st.plotly_chart(fig)
-  
-  #%% 4. ChatGPT Code - Total Dollar Volume Traded by Ticker: Visualize the total dollar volume traded for each ticker symbol.
-  # Calculate total dollar volume for each ticker
-  df['dollar_volume'] = df['quantity'] * df['fee/share']
-  total_volume_by_ticker = df.groupby('ticker')['dollar_volume'].sum().sort_values(ascending=False).reset_index()
   
   st.header("Total Dollar Volume Traded by Ticker")
-  fig = px.bar(total_volume_by_ticker, x='ticker', y='dollar_volume', title="Total Dollar Volume Traded by Ticker")
+  fig = px.bar(filtered_df, x='ticker', y='dollar_volume', title="Total Dollar Volume Traded by Ticker",color='GICS Sector')
   st.plotly_chart(fig)
   
-  #%% 5. ChtGPT Code - Histogram of Fee per Share: Analyze the distribution of commission fees per share.
+  #%%Histogram of Fee per Share: Analyze the distribution of commission fees per share.
   st.header("Histogram of Fee per Share")
-  fig = px.histogram(df, x='fee/share', nbins=20, title="Histogram of Fee per Share")
+  fig = px.histogram(filtered_df, x='fee/share', nbins=3, title="Histogram of Fee per Share")
   st.plotly_chart(fig)
   
 elif layout_pick=='Key Client Stats':
