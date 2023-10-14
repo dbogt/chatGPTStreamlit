@@ -136,8 +136,8 @@ elif layout_pick == 'Advanced Charts':
     elif chartType == 'bar':
         kpi = st.selectbox("KPI", kpis)
         xCat = st.selectbox("Pick a category for the x-axis",categories,index=categories.index("Client Name"))
-        zCat = st.selectbox("Pick a category for the legend filter",categories,index=dfColumns.index("GICS Sector"))
-        hover = st.selectbox("Pick a category for the hover",categories,index=dfColumns.index("ticker"))
+        zCat = st.selectbox("Pick a category for the legend filter",categories,index=categories.index("GICS Sector"))
+        hover = st.selectbox("Pick a category for the hover",categories,index=categories.index("ticker"))
         custTitle = "Total " +kpi.title() + " Value by " + xCat + " by " + zCat
         fig = px.bar(filtered_df, x=xCat, y=kpi, color=zCat, hover_name=hover, title=custTitle)
         st.plotly_chart(fig)
