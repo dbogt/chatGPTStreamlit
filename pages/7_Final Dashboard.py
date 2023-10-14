@@ -72,5 +72,40 @@ if layout_pick=='Summary':
   st.plotly_chart(fig)
   
 elif layout_pick=='Key Client Stats':
-  st.write("Code to come")
+    # Total volume traded and total commissions
+    total_volume = filtered_df['quantity'].sum()
+    total_commissions = filtered_df['fees'].sum()
+
+    st.subheader("Key Stats for Selected Client(s)")
+    kpi1, kpi2 = st.columns(2)
+    kpi1.metric(label="Total Fees ($)",value="${:,.2f}".format(total_commissions))
+    kpi2.metric(label="Total Volume Traded ($ mm)",value="${:,.2f}".format(total_volume/10**6))
+    
+    # Top 5 tickers traded (by dollar volume and fees)
+    top_tickers_by_volume = filtered_df.groupby('ticker')['dollar_volume'].sum().nlargest(5).reset_index()
+    top_tickers_by_fees = filtered_df.groupby('ticker')['fees'].sum().nlargest(5).reset_index()
+
+    st.subheader("Top 5 Tickers Traded")
+    # Display tables side by side in two columns
+    col1, col2 = st.columns(2)
+    col1.metric("By Dollar Volume:")
+    col1.write(top_tickers_by_volume)
+
+    col2.write("By Fees:")
+    col2.write(top_tickers_by_fees)
+  
+ # Top 5 sectors traded (by dollar volume and fees)
+    top_sectors_by_volume = filtered_df.groupby('GICS Sector')['dollar_volume'].sum().nlargest(5).reset_index()
+    top_sectors_by_fees = filtered_df.groupby('GICS Sector')['fees'].sum().nlargest(5).reset_index()
+
+    st.subheader("Top 5 Sectors Traded")
+
+    # Display tables side by side in two columns
+    #col3, col4 = st.beta_columns(2) #original ChatGPT code   
+    col3, col4 = st.columns(2) 
+    col3.write("By Dollar Volume:")
+    col3.write(top_sectors_by_volume)
+
+    col4.write("By Fees:")
+    col4.write(top_sectors_by_fees)
   
