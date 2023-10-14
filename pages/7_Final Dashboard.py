@@ -126,7 +126,7 @@ elif layout_pick == 'Advanced Charts':
 
     title = "{} by {}, {}, and {}".format(kpi, l1, l2, l3)
     if chartType == 'sunburst':
-        figSector = px.sunburst(filered_df, values=kpi, path=[l1, l2, l3], title=title)
+        figSector = px.sunburst(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
     else:
-        figSector = px.treemap(filered_df, values=kpi, path=[l1, l2, l3], title=title)
+        figSector = px.treemap(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
     st.plotly_chart(figSector) 
