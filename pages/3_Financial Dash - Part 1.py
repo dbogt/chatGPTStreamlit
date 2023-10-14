@@ -1,12 +1,4 @@
-#%% App Details
-appDetails = """
-Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
-Date: Oct 16, 2023 \n
-ChatGPT Convo: https://chat.openai.com/share/3125e5e4-8aa0-4b46-be3b-dbfdd9868afc
-Description: First iteration of dashboard using Altair charts.
-"""
-with st.expander("See app info"):
-    st.write(appDetails)
+
 
 
 #%% 1. ChatGPT Code - Total Fees Over Time: Visualize the total fees generated over the quarter to track the revenue trend.
@@ -17,6 +9,16 @@ import altair as alt
 # Load your financial dataset
 df = pd.read_excel('chatGPTDemo.xlsx')
 # Assuming your dataset is loaded into a pandas DataFrame named 'df'
+
+#%% App Details
+appDetails = """
+Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
+Date: Oct 16, 2023 \n
+ChatGPT Convo: https://chat.openai.com/share/3125e5e4-8aa0-4b46-be3b-dbfdd9868afc
+Description: First iteration of dashboard using Altair charts.
+"""
+with st.expander("See app info"):
+    st.write(appDetails)
 
 # Convert the 'date' column to a datetime format
 df['date'] = pd.to_datetime(df['date'])
