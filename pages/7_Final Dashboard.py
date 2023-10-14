@@ -27,7 +27,7 @@ selected_clients = st.sidebar.multiselect("Select Client(s)", unique_clients)
 
 sectors = sorted(df['GICS Sector'].unique())
 selected_sectors = st.sidebar.multiselect("Pick sector(s):",sectors)
-tickers = sorted(df['Ticker'].unique())
+tickers = sorted(df['ticker'].unique())
 selected_tickers = st.sidebar.multiselect("Pick ticker(s):",tickers)
 
 num_picked = len(selected_clients)
@@ -38,7 +38,7 @@ if selected_clients:     # Filter the DataFrame based on the selected clients
 if selected_sectors:     # Filter the DataFrame based on the selected secotrs
     filtered_df = filtered_df[filtered_df['GICS Sector'].isin(selected_sectors)]
 if selected_tickers:     # Filter the DataFrame based on the selected secotrs
-    filtered_df = filtered_df[filtered_df['Ticker'].isin(selected_tickers)]
+    filtered_df = filtered_df[filtered_df['ticker'].isin(selected_tickers)]
 
 layout_pick = st.sidebar.radio("Pick dashobard view:", ['Summary','Key Client Stats'])
 
