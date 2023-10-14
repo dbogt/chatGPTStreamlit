@@ -31,7 +31,7 @@ st.plotly_chart(fig)
 
 #%% 2. ChatGPT Code - Top Clients by Total Fees: Identify your most profitable clients.
 # Group data by 'Client Name' and calculate total fees for each client
-top_clients = df.groupby('Client Name')['fees'].sum().sort_values(ascending=False).head(10).reset_index()
+top_clients = df.groupby('Client Name')['fees'].sum().sort_values(ascending=False).head(10)
 
 st.header("Top Clients by Total Fees")
 fig = px.bar(top_clients, x=top_clients.index, y='fees', title="Top Clients by Total Fees")
