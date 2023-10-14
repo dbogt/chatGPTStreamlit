@@ -22,7 +22,7 @@ with st.expander("See app info"):
 
 #%% 1. ChatGPT Code - Total Fees Over Time: Visualize the total fees generated over the quarter to track the revenue trend.
 # Group data by date and calculate total fees for each day
-fees_over_time = df.groupby('date')['fees'].sum()
+fees_over_time = df.groupby('date')['fees'].sum().reset_index()
 
 st.header("Total Fees Over Time")
 fig = px.line(fees_over_time, x='date', y='fees', title="Total Fees Over Time")
@@ -31,7 +31,7 @@ st.plotly_chart(fig)
 
 #%% 2. ChatGPT Code - Top Clients by Total Fees: Identify your most profitable clients.
 # Group data by 'Client Name' and calculate total fees for each client
-top_clients = df.groupby('Client Name')['fees'].sum().sort_values(ascending=False).head(10)
+top_clients = df.groupby('Client Name')['fees'].sum().sort_values(ascending=False).head(10).reset_index()
 
 st.header("Top Clients by Total Fees")
 fig = px.bar(top_clients, x=top_clients.index, y='fees', title="Top Clients by Total Fees")
@@ -39,7 +39,7 @@ st.plotly_chart(fig)
 
 #%% 3. ChatGPT Code - Fees by Sector: Understand which sectors generate the most fees.
 # Group data by 'GICS Sector' and calculate total fees for each sector
-fees_by_sector = df.groupby('GICS Sector')['fees'].sum()
+fees_by_sector = df.groupby('GICS Sector')['fees'].sum().reset_index()
 
 st.header("Fees by GICS Sector")
 fig = px.pie(fees_by_sector, names='GICS Sector', values='fees', title="Fees by GICS Sector")
@@ -48,7 +48,7 @@ st.plotly_chart(fig)
 #%% 4. ChatGPT Code - Total Dollar Volume Traded by Ticker: Visualize the total dollar volume traded for each ticker symbol.
 # Calculate total dollar volume for each ticker
 df['dollar_volume'] = df['quantity'] * df['fee/share']
-total_volume_by_ticker = df.groupby('ticker')['dollar_volume'].sum().sort_values(ascending=False)
+total_volume_by_ticker = df.groupby('ticker')['dollar_volume'].sum().sort_values(ascending=False).reset_index()
 
 st.header("Total Dollar Volume Traded by Ticker")
 fig = px.bar(total_volume_by_ticker, x='ticker', y='dollar_volume', title="Total Dollar Volume Traded by Ticker")
