@@ -43,7 +43,8 @@ st.pie_chart(fees_by_sector)
 
 #%% 4. ChatGPT Code - Total Dollar Volume Traded by Ticker: Visualize the total dollar volume traded for each ticker symbol.
 # Calculate total dollar volume for each ticker
-df['dollar_volume'] = df['quantity'] * df['fee/share']
+#df['dollar_volume'] = df['quantity'] * df['fee/share'] #incorrect from chatgpt, this is the same as fees
+df['dollar_volume'] = df['quantity'] * df['Close']
 total_volume_by_ticker = df.groupby('ticker')['dollar_volume'].sum().sort_values(ascending=False)
 
 st.header("Total Dollar Volume Traded by Ticker")
