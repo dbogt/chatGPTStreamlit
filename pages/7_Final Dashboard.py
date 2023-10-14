@@ -69,6 +69,7 @@ if layout_pick=='Summary':
   st.header("Total Dollar Volume Traded by Ticker")
   total_volume_by_ticker = filtered_df.groupby(['ticker','GICS Sector','Client Name'])['dollar_volume'].sum().sort_values(ascending=False).reset_index()
   fig = px.bar(total_volume_by_ticker, x='ticker', y='dollar_volume', title="Total Dollar Volume Traded by Ticker",color='GICS Sector',hover_name='Client Name')
+  fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'}
   st.plotly_chart(fig)
   
   #%%Histogram of Fee per Share: Analyze the distribution of commission fees per share.
@@ -99,7 +100,7 @@ elif layout_pick=='Key Client Stats':
     col2.write("By Fees:")
     col2.write(top_tickers_by_fees.style.format(colFormats,na_rep="-"))
   
- # Top 5 sectors traded (by dollar volume and fees)
+    # Top 5 sectors traded (by dollar volume and fees)
     top_sectors_by_volume = filtered_df.groupby('GICS Sector')['dollar_volume'].sum().nlargest(5).reset_index()
     top_sectors_by_fees = filtered_df.groupby('GICS Sector')['fees'].sum().nlargest(5).reset_index()
 
