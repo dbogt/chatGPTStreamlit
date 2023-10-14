@@ -46,7 +46,7 @@ if selected_sectors:     # Filter the DataFrame based on the selected secotrs
 if selected_tickers:     # Filter the DataFrame based on the selected secotrs
     filtered_df = filtered_df[filtered_df['ticker'].isin(selected_tickers)]
 
-layout_pick = st.sidebar.radio("Pick dashobard view:", ['Summary','Key Client Stats'])
+layout_pick = st.sidebar.radio("Pick dashobard view:", ['Summary','Key Client Stats','Advanced Charts'])
 
 if layout_pick=='Summary':
   # Group data by date and calculate total fees for each day
@@ -114,4 +114,19 @@ elif layout_pick=='Key Client Stats':
 
     col4.write("By Fees:")
     col4.write(top_sectors_by_fees.style.format(colFormats,na_rep="-"))
-  
+elif layout_pick == 'Advanced Charts':
+    st.title('Sector Summary')
+    chartType = st.radio("Chart Type",('sunburst','treemap'))
+    col5, col6, col7, col8 = st.columns(4)
+    categories = ['Client Name','GICS Sector', 'GICS Sub Industry','Ticker']
+    kpi = col5.selectbox("KPI", ['Fees','$ Volume'])
+    l1 = col6.selectbox("Pick level 1",categories, 1)
+    l2 = col7.selectbox("Pick level 2",categories, 2)
+    l3 = col8.selectbox("Pick level 3",categories, 3)
+
+    title = "{} by {}, {}, and {}".format(kpi, l1, l2, l3)
+    if chartType == 'sunburst':
+        figSector = px.sunburst(filered_df, values=kpi, path=[l1, l2, l3], title=title)
+    else:
+        figSector = px.treemap(filered_df, values=kpi, path=[l1, l2, l3], title=title)
+    st.plotly_chart(figSector) 
