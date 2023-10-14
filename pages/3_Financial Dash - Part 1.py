@@ -1,6 +1,3 @@
-
-
-
 #%% 1. ChatGPT Code - Total Fees Over Time: Visualize the total fees generated over the quarter to track the revenue trend.
 import streamlit as st
 import pandas as pd
