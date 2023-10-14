@@ -21,7 +21,7 @@ with st.expander("See app info"):
 
 #%% 1. ChatGPT Code - Total Fees Over Time: Visualize the total fees generated over the quarter to track the revenue trend.
 # Group data by date and calculate total fees for each day
-fees_over_time = df.groupby('date')['Fees'].sum()
+fees_over_time = df.groupby('date')['fees'].sum()
 
 st.header("Total Fees Over Time")
 st.line_chart(fees_over_time)
