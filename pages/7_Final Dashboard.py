@@ -31,9 +31,9 @@ unique_clients = sorted(df['Client Name'].unique())
 selected_clients = st.sidebar.multiselect("Select Client(s)", unique_clients)
 
 sectors = sorted(df['GICS Sector'].unique())
-selected_sectors = st.sidebar.multiselect("Pick sector(s):",sectors)
+selected_sectors = st.sidebar.multiselect("Pick Sector(s):",sectors)
 tickers = sorted(df['ticker'].unique())
-selected_tickers = st.sidebar.multiselect("Pick ticker(s):",tickers)
+selected_tickers = st.sidebar.multiselect("Pick Ticker(s):",tickers)
 
 num_picked = len(unique_clients)
 #Filter data set by picked clients, sectors and tickers; if any of the dropdowns were left blank, use all the data 
