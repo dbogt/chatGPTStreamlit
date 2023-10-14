@@ -63,22 +63,22 @@ if layout_pick=='Summary':
   num = min(num_picked, 10)
   top_clients = filtered_df.groupby('Client Name')['fees'].sum().sort_values(ascending=False).head(num)
   fig = px.bar(top_clients, x=top_clients.index, y='fees', title="Top {} Clients by Total Fees".format(num))
-  st.plotly_chart(fig)
+  st.plotly_chart(fig, use_container_width=True)
   
   st.header("Fees by GICS Sector")
   fig = px.pie(filtered_df, names='GICS Sector', values='fees', title="Fees by GICS Sector")
-  st.plotly_chart(fig)
+  st.plotly_chart(fig, use_container_width=True)
   
   st.header("Total Dollar Volume Traded by Ticker")
   total_volume_by_ticker = filtered_df.groupby(['ticker','GICS Sector','Client Name'])['dollar_volume'].sum().sort_values(ascending=False).reset_index()
   fig = px.bar(total_volume_by_ticker, x='ticker', y='dollar_volume', title="Total Dollar Volume Traded by Ticker",color='GICS Sector',hover_name='Client Name')
   fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
-  st.plotly_chart(fig)
+  st.plotly_chart(fig, use_container_width=True)
   
   #%%Histogram of Fee per Share: Analyze the distribution of commission fees per share.
   st.header("Histogram of Fee per Share")
   fig = px.histogram(filtered_df, x='fee/share', nbins=3, title="Histogram of Fee per Share")
-  st.plotly_chart(fig)
+  st.plotly_chart(fig, use_container_width=True)
   
 elif layout_pick=='Key Client Stats':
     # Total volume traded and total commissions
