@@ -27,6 +27,7 @@ selected_clients = st.multiselect("Select Client(s)", df['Client Name'].unique()
 if selected_clients:
     # Filter the DataFrame based on the selected clients
     filtered_df = df[df['Client Name'].isin(selected_clients)]
+    st.write(filtered_df)
 
     # Total volume traded and total commissions
     total_volume = filtered_df['quantity'].sum()
