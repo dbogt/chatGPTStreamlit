@@ -136,6 +136,8 @@ elif layout_pick == 'Advanced Charts':
         else:
             figSector = px.treemap(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
         st.plotly_chart(figSector, use_container_width=True, height=500) 
+        pivot = filtered_df.groupby([l1, l2, l3])[kpi].sum()  
+        st.write(pivot.style.format(colFormats,na_rep="-"))
     elif chartType == 'bar':
         k_col, x_col, z_col, h_col = st.columns(4)
         kpi = k_col.selectbox("KPI", kpis)
@@ -146,4 +148,6 @@ elif layout_pick == 'Advanced Charts':
         fig = px.bar(filtered_df, x=xCat, y=kpi, color=zCat, hover_name=hover, title=custTitle)
         fig.update_layout(barmode='stack', xaxis={'categoryorder':'total descending'})
         st.plotly_chart(fig, use_container_width=True, height=500)
+        pivot = filtered_df.groupby([xCat, zCat])[kpi].sum()  
+        st.write(pivot.style.format(colFormats,na_rep="-"))
         
