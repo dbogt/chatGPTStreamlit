@@ -17,7 +17,7 @@ with st.expander("See app info"):
 @st.cache_data
 def grabData():
   df = pd.read_excel('chatGPTDemo.xlsx', parse_dates=['date'])
-  df['dollar_volume'] = df['quantity'] * df['fee/share'] #code carried over from Part 2
+  df['dollar_volume'] = df['quantity'] * df['Close'] #code carried over from Part 2
   return df
 
 df = grabData()
