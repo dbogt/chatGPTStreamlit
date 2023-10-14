@@ -13,11 +13,16 @@ with st.expander("See app info"):
     st.write(appDetails)
 
 
+#%% Column formats
+colFormats = {"date":"{:%Y-%m-%d}",
+              "fees":"${:,.0f}",
+              "dollar_volume":"${:,.0f}"}
+
 # Load your financial dataset
 @st.cache_data
 def grabData():
   df = pd.read_excel('chatGPTDemo.xlsx', parse_dates=['date'])
-  df['dollar_volume'] = df['quantity'] * df['Close'] #code carried over from Part 2
+  df['dollar_volume'] = df['quantity'] * df['Adj Close'] #code carried over from Part 2
   return df
 
 df = grabData()
@@ -89,10 +94,10 @@ elif layout_pick=='Key Client Stats':
     # Display tables side by side in two columns
     col1, col2 = st.columns(2)
     col1.write("By Dollar Volume:")
-    col1.write(top_tickers_by_volume)
+    col1.write(top_tickers_by_volume.style.format(colFormats,na_rep="-"))
 
     col2.write("By Fees:")
-    col2.write(top_tickers_by_fees)
+    col2.write(top_tickers_by_fees.style.format(colFormats,na_rep="-"))
   
  # Top 5 sectors traded (by dollar volume and fees)
     top_sectors_by_volume = filtered_df.groupby('GICS Sector')['dollar_volume'].sum().nlargest(5).reset_index()
@@ -104,8 +109,8 @@ elif layout_pick=='Key Client Stats':
     #col3, col4 = st.beta_columns(2) #original ChatGPT code   
     col3, col4 = st.columns(2) 
     col3.write("By Dollar Volume:")
-    col3.write(top_sectors_by_volume)
+    col3.write(top_sectors_by_volume.style.format(colFormats,na_rep="-"))
 
     col4.write("By Fees:")
-    col4.write(top_sectors_by_fees)
+    col4.write(top_sectors_by_fees.style.format(colFormats,na_rep="-"))
   
