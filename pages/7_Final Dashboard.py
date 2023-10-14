@@ -119,7 +119,7 @@ elif layout_pick == 'Advanced Charts':
     chartType = st.radio("Chart Type",('sunburst','treemap'))
     col5, col6, col7, col8 = st.columns(4)
     categories = ['Client Name','GICS Sector', 'GICS Sub Industry','Ticker']
-    kpi = col5.selectbox("KPI", ['Fees','$ Volume'])
+    kpi = col5.selectbox("KPI", ['fees','dollar_volume'])
     l1 = col6.selectbox("Pick level 1",categories, 1)
     l2 = col7.selectbox("Pick level 2",categories, 2)
     l3 = col8.selectbox("Pick level 3",categories, 3)
