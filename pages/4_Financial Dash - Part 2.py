@@ -13,7 +13,7 @@ df['date'] = pd.to_datetime(df['date'])
 appDetails = """
 Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
 Date: Oct 16, 2023 \n
-ChatGPT Convo: https://chat.openai.com/share/3125e5e4-8aa0-4b46-be3b-dbfdd9868afc
+ChatGPT Convo: https://chat.openai.com/share/3125e5e4-8aa0-4b46-be3b-dbfdd9868afc \n
 Description: Second iteration of dashboard using Plotly charts. \n
 Prompt: Instead of using altair can you redo those graphs with the plotly library?
 """
