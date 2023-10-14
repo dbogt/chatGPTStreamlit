@@ -116,17 +116,29 @@ elif layout_pick=='Key Client Stats':
     col4.write(top_sectors_by_fees.style.format(colFormats,na_rep="-"))
 elif layout_pick == 'Advanced Charts':
     st.title('Sector Summary')
-    chartType = st.radio("Chart Type",('sunburst','treemap'))
-    col5, col6, col7, col8 = st.columns(4)
+    chartType = st.radio("Chart Type",('sunburst','treemap','bar'))
     categories = ['Client Name','GICS Sector', 'GICS Sub Industry','ticker']
-    kpi = col5.selectbox("KPI", ['fees','dollar_volume'])
-    l1 = col6.selectbox("Pick level 1",categories, 1)
-    l2 = col7.selectbox("Pick level 2",categories, 2)
-    l3 = col8.selectbox("Pick level 3",categories, 3)
+    kpis = ['fees','dollar_volume']
+    if chartType == 'sunburst' or chartType == 'treemap':
+        col5, col6, col7, col8 = st.columns(4)
+        
+        kpi = col5.selectbox("KPI", kpis)
+        l1 = col6.selectbox("Pick level 1",categories, 1)
+        l2 = col7.selectbox("Pick level 2",categories, 2)
+        l3 = col8.selectbox("Pick level 3",categories, 3)
 
-    title = "{} by {}, {}, and {}".format(kpi, l1, l2, l3)
-    if chartType == 'sunburst':
-        figSector = px.sunburst(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
-    else:
-        figSector = px.treemap(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
-    st.plotly_chart(figSector) 
+        title = "{} by {}, {}, and {}".format(kpi.title(), l1, l2, l3)
+        if chartType == 'sunburst':
+            figSector = px.sunburst(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
+        else:
+            figSector = px.treemap(filtered_df, values=kpi, path=[l1, l2, l3], title=title)
+        st.plotly_chart(figSector) 
+    elif chartType == 'bar':
+        kpi = st.selectbox("KPI", kpis)
+        xCat = st.selectbox("Pick a category for the x-axis",filtered_df,index=categories.index("Client Name"))
+        zCat = st.selectbox("Pick a category for the legend filter",dfColumns,index=dfColumns.index("GICS Sector"))
+        hover = st.selectbox("Pick a category for the hover",dfColumns,index=dfColumns.index("ticker"))
+        custTitle = "Total " +kpi.title() " Value by " + xCat + " by " + zCat
+        fig = px.bar(filtered_df, x=xCat, y=kpi, color=zCat, hover_name=hover, title=custTitle)
+        st.plotly_chart(fig)
+        
