@@ -32,7 +32,8 @@ if selected_clients:
     filtered_df = df[df['Client Name'].isin(selected_clients)]
 
     # Total volume traded and total commissions
-    total_volume = filtered_df['quantity'].sum()
+    #total_volume = filtered_df['quantity'].sum() #incorrect, want to see total $ volume
+    total_volume = filtered_df['dollar_volume'].sum()
     total_commissions = filtered_df['fees'].sum()
 
     st.subheader("Key Stats for Selected Client(s)")
