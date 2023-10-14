@@ -7,7 +7,7 @@ Learn how to create quick interactive dashboards with Python to drill down on fi
 
 In a few minutes, our expert will modify the generated code and demo how a dashboard can be created and launched to share their analysis with teammates. Our expert will also compare the live stand-alone web app with integrating Python directly in Excel.
 
-**What we Will Cover?**
+**What We Will Cover?**
 
 - Aggregating and importing financial data from Excel into Python
 - Best practices in using ChatGPT to create and improve dummy code for Python
@@ -15,6 +15,8 @@ In a few minutes, our expert will modify the generated code and demo how a dashb
 - Using Python directly in Excel to generate powerful graphs without installing any additional software
 - Comparing stand-alone Python web apps with dashboards in Excel
 - Deploying and sharing streamlit dashboards with teammates at a firm
+
+Code Repo: https://github.com/dbogt/chatGPTStreamlit/
 """
 
 st.markdown(text)
