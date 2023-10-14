@@ -23,7 +23,7 @@ def grabData():
 df = grabData()
 
 unique_clients = sorted(df['Client Name'].unique())
-selected_clients = st.multiselect("Select Client(s)", unique_clients)
+selected_clients = st.sidebar.multiselect("Select Client(s)", unique_clients)
 
 if selected_clients:
     # Filter the DataFrame based on the selected clients
