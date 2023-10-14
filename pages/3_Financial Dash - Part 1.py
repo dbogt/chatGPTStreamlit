@@ -1,4 +1,3 @@
-#%% 1. ChatGPT Code - Total Fees Over Time: Visualize the total fees generated over the quarter to track the revenue trend.
 import streamlit as st
 import pandas as pd
 import altair as alt
@@ -6,6 +5,9 @@ import altair as alt
 # Load your financial dataset
 df = pd.read_excel('chatGPTDemo.xlsx')
 # Assuming your dataset is loaded into a pandas DataFrame named 'df'
+
+# Convert the 'date' column to a datetime format
+df['date'] = pd.to_datetime(df['date'])
 
 #%% App Details
 appDetails = """
@@ -17,9 +19,7 @@ Description: First iteration of dashboard using Altair charts.
 with st.expander("See app info"):
     st.write(appDetails)
 
-# Convert the 'date' column to a datetime format
-df['date'] = pd.to_datetime(df['date'])
-
+#%% 1. ChatGPT Code - Total Fees Over Time: Visualize the total fees generated over the quarter to track the revenue trend.
 # Group data by date and calculate total fees for each day
 fees_over_time = df.groupby('date')['Fees'].sum()
 
