@@ -3,6 +3,9 @@ import pandas as pd
 import plotly.express as px
 
 #%% App Details
+st.set_page_config(page_title="Trades Dashboard",
+                        layout='wide')
+
 appDetails = """
 Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
 Date: Oct 16, 2023 \n
