@@ -1,7 +1,7 @@
 import streamlit as st
 st.title("2023 Free Learning Series: Financial Dashboards with Python and ChatGPT")
 text = """
-## This Free Learning Series will took place from 11 am to 12 pm ET on Monday, October 16, 2023 via Zoom.
+**This Free Learning Series took place from 11 am to 12 pm ET on Monday, October 16, 2023 via Zoom.**
 
 Recording and slides can be found on the Training The Street website, under past topics for October 2023: https://trainingthestreet.com/free-learning-series/
 - [View Recording](https://trainingthestreet.zoom.us/rec/play/_aY431tGQk3Pmwh-jHGGu-fHLUnos9JVy8sdfyu2SkAKkU6rPM-QH4Z1rfGnS3FJbRY3ZWe560GiUi3Z.AcGZvWR-wfnrlqBA?canPlayFromShare=true&from=share_recording_detail&continueMode=true&componentName=rec-play&originRequestUrl=https%3A%2F%2Ftrainingthestreet.zoom.us%2Frec%2Fshare%2Fti333ONogkNr9sTYts1a6oOQdVCHcMrxNbOMRLuEji8TjrVj7NchlGAXWHowVXkg.p2fbAajoscx3vzzI)
