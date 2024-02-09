@@ -9,7 +9,7 @@ st.set_page_config(page_title="Trades Dashboard",
 appDetails = """
 Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
 Date: Oct 16, 2023 \n
-ChatGPT Convo: https://chat.openai.com/share/3125e5e4-8aa0-4b46-be3b-dbfdd9868afc \n
+ChatGPT Convo: https://chat.openai.com/share/9a47b226-92d2-49b9-a1cf-cdf731a0d430 \n
 Description: Final iteration of dashboard with added code for formatting and layout. Also combined the summary stats and breakdown by client into one dashboard with radio buttons.\n
 """
 with st.expander("See app info"):
