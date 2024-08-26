@@ -121,7 +121,7 @@ elif layout_pick == 'Advanced Charts':
     st.title('Sector Summary')
     chartType = st.radio("Chart Type",('sunburst','treemap','bar'))
     categories = ['Client Name','GICS Sector', 'GICS Sub Industry','ticker']
-    kpis = ['fees','dollar_volume']
+    kpis = ['fees','dollar_volume','quantity']
     if chartType == 'sunburst' or chartType == 'treemap':
         col5, col6, col7, col8 = st.columns(4)
         
